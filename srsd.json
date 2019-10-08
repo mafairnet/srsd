@@ -1,10 +1,10 @@
 {
   "SocketPath": "/tmp/srsd.sock",
-  "DefaultSecret": "Secret key for undeclared domains",
+  "DefaultSecret": "OXQeBpfVxYjIdvs/ES6ETHz9FXdXzssOr3nIx9EIug7OqVGNUrvDdEtqI5b9vTUrGX3+fp2EgyMgQRAulOgxGA==",
   "Domains": [
     {
       "HostName": "srs.example.org",
-      "Secret": "Secret key for srs.example.org"
+      "Secret": "g9RT+rioIa/nJcsVVGOHMScZyk5xOta2C0tVAcgvc5cHltC/gf66RmV0v6Up0a7VFSyEHQkawXtQ7UCDbL5UCg=="
     }
   ]
 }

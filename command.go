@@ -44,11 +44,11 @@ func parseCommand(s string) (command, error) {
 func newSrs(cfg *config, srsDomain string) srs.SRS {
   srs := srs.SRS{Domain: srsDomain}
 
-  domain := cfg.domainsByHostName[srsDomain]
+  domain := cfg.domains[srsDomain]
   if domain == nil {
-    srs.Secret = []byte(cfg.DefaultSecret)
+    srs.Secret = cfg.defaultSecret
   } else {
-    srs.Secret = []byte(domain.Secret)
+    srs.Secret = domain.secret
   }
 
   return srs

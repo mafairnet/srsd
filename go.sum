@@ -1,2 +1,4 @@
 github.com/mileusna/srs v0.0.0-20180620123349-26a47c81d575 h1:MGjMw3TF6WB0sLh/o+xUSm3Vpli6rOkuEk3a8N4sOaI=
 github.com/mileusna/srs v0.0.0-20180620123349-26a47c81d575/go.mod h1:xsdjsioqK7dr6T/TEnLCUR69JELto5A0/bK5pK0c4hY=
+github.com/pkg/errors v0.8.1 h1:iURUrRGxPUNPdy5/HRSm+Yj6okJ6UtLINN0Q9M4+h3I=
+github.com/pkg/errors v0.8.1/go.mod h1:bwawxfHBFNV+L2hUp1rHADufV3IMtnDRdf1r5NINEl0=
