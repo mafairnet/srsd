@@ -1,0 +1,10 @@
+{
+  "SocketPath": "/tmp/srsd.sock",
+  "DefaultSecret": "Secret key for undeclared domains",
+  "Domains": [
+    {
+      "HostName": "srs.example.org",
+      "Secret": "Secret key for srs.example.org"
+    }
+  ]
+}

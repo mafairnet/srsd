@@ -1,0 +1,14 @@
+[Unit]
+Description=Sender Rewriting Scheme Daemon
+
+[Service]
+Type=exec
+User=srsd
+Group=srsd
+ExecStart=/usr/local/bin/srsd -config /etc/srsd.json -socket /run/srsd/srsd.sock
+Restart=on-failure
+RuntimeDirectory=srsd
+RuntimeDirectoryMode=0750
+
+[Install]
+WantedBy=multi-user.target
