@@ -18,10 +18,14 @@ type srsd interface {
   close() error
 }
 
-func newSrsd(config *config, socketPath string) (srsd srsd, err error) {
+func newSrsd(config *config, socketPath string, socketAccess os.FileMode) (srsd srsd, err error) {
   os.Remove(socketPath)
 
   listener, err := net.Listen("unix", socketPath)
+  if err != nil {
+    return
+  }
+  err = os.Chmod(socketPath, socketAccess & 0777)
   if err != nil {
     return
   }

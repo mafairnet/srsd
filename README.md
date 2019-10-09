@@ -34,12 +34,14 @@ head -c64 /dev/urandom | base64 -w0
 Start the daemon by running `srsd`.
 
 By default, srsd will look for a configuration file named srsd.json in the
-current directory and open a socket named srsd.sock in the current directory. To
-specify different configuration file and socket locations, use the
-`-config-file` and `-socket-path` options respectively. For example:
+current directory and open a socket named srsd.sock in the current directory.
+The socket will be created with access permissions set to 0770. To specify
+different configuration file and socket locations, use the `-config-file` and
+`-socket-path` options respectively. To specify different access permissions use
+the `-socket-access` option. For example:
 
 ```
-srsd -config-file /etc/srsd.conf -socket-path /run/srsd/srsd.sock
+srsd -config-file /etc/srsd.conf -socket-path /run/srsd/srsd.sock -socket-access 0777
 ```
 
 The process will remain running in the foreground when started. To terminate

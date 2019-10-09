@@ -10,14 +10,15 @@ import (
 func main() {
   configFile := flag.String("config", "./srsd.json", "File containing configuration options")
   socketPath := flag.String("socket", "./srsd.sock", "Path to the socket file to listen on")
-	flag.Parse()
+  socketAccess := flag.Uint("socket-access", 0770, "Access permissions to set for the socket file")
+  flag.Parse()
 
   config, err := loadConfig(*configFile)
 	if err != nil {
 		panic(err)
 	}
 
-  srsd, err := newSrsd(config, *socketPath)
+  srsd, err := newSrsd(config, *socketPath, os.FileMode(*socketAccess))
 	if err != nil {
 		panic(err)
 	}
