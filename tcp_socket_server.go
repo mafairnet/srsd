@@ -10,10 +10,7 @@ import (
 	"strings"
 )
 
-const (
-	Message       = "Pong"
-	StopCharacter = "\r\n\r\n"
-)
+var configuration = getProgramConfiguration()
 
 func SocketServer(port int, config *config) {
 
@@ -59,14 +56,16 @@ ILOOP:
 		case nil:
 
 			log.Println("Receive:", data)
-
+			data = strings.TrimSuffix(data, "\n")
 			cmd, err := parseCommand(data)
+			log.Printf("Command Result: %s", cmd)
+
 			if err != nil {
 				//writeError(writer, err)
 				errorString := err.Error()
 				log.Printf("Error: %s", errorString)
 				w.Write([]byte(errorString))
-				w.Write([]byte(StopCharacter))
+				w.Write([]byte(configuration.StopCharacter))
 				break ILOOP
 			}
 
@@ -76,11 +75,13 @@ ILOOP:
 				errorString := err.Error()
 				log.Printf("Error: %s", errorString)
 				w.Write([]byte(errorString))
-				w.Write([]byte(StopCharacter))
+				w.Write([]byte(configuration.StopCharacter))
 			} else {
+				result = "200 " + result
 				w.Write([]byte(result))
-				w.Write([]byte(StopCharacter))
-				log.Printf("Command Result: %s", result)
+				w.Write([]byte(configuration.StopCharacter))
+				w.Flush()
+				log.Printf("Sent: %s", result)
 			}
 
 			if isTransportOver(data) {
@@ -93,13 +94,10 @@ ILOOP:
 		}
 
 	}
-	//w.Write([]byte(Message))
-	//w.Flush()
-	//log.Printf("Send: %s", Message)
 
 }
 
 func isTransportOver(data string) (over bool) {
-	over = strings.HasSuffix(data, "\r\n\r\n")
+	over = strings.HasSuffix(data, "\n")
 	return
 }

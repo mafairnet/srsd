@@ -9,8 +9,6 @@ import (
 
 func main() {
 
-	port := 3333
-
 	configFile := flag.String("config", "./srsd.json", "File containing configuration options")
 	socketPath := flag.String("socket", "./srsd.sock", "Path to the socket file to listen on")
 	socketAccess := flag.Uint("socket-access", 0770, "Access permissions to set for the socket file")
@@ -19,9 +17,9 @@ func main() {
 	config, err := loadConfig(*configFile)
 	if err != nil {
 		panic(err)
-  }
-  
-  SocketServer(port, config)
+	}
+
+	SocketServer(configuration.TcpSenderPort, config)
 
 	srsd, err := newSrsd(config, *socketPath, os.FileMode(*socketAccess))
 	if err != nil {

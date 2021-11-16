@@ -1,0 +1,15 @@
+{
+    "TcpSenderPort":3333,
+    "TcpRecipientPort":3334,
+    "SrsDomain":"example.com",
+    "StopCharacter":"\n",
+    "SocketPath": "/tmp/srsd.sock",
+    "DefaultSecret": "OXQeBpfVxYjIdvs/ES6ETHz9FXdXzssOr3nIx9EIug7OqVGNUrvDdEtqI5b9vTUrGX3+fp2EgyMgQRAulOgxGA==",
+    "Domains": [
+      {
+        "HostName": "srs.example.org",
+        "Secret": "g9RT+rioIa/nJcsVVGOHMScZyk5xOta2C0tVAcgvc5cHltC/gf66RmV0v6Up0a7VFSyEHQkawXtQ7UCDbL5UCg=="
+      }
+    ]
+  }
+  
